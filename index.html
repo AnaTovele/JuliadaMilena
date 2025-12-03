@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FashionLux — seu look, sua identidade</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+--bg:#f4f7fb;--card:#fff;--accent:#ff4f70;--dark:#0b1b2b;--muted:#6b6b6b;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--dark);}
+header{background:#000;position:sticky;top:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;}
+.logo{width:46px;height:46px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ff7b9a);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;}
+nav{display:flex;gap:18px;align-items:center;}
+nav a{color:#fff;text-decoration:none;font-weight:600;}
+.nav-actions{display:flex;gap:8px;align-items:center;}
+.icon-btn{background:transparent;border:0;color:#fff;font-size:18px;cursor:pointer;position:relative;}
+.cart-count{position:absolute;top:-6px;right:-6px;background:var(--accent);color:#fff;border-radius:50%;font-size:11px;padding:4px 6px;font-weight:700;}
+.banner-container{max-width:1200px;margin:20px auto;position:relative;overflow:hidden;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08);}
+.banner-slide{width:100%;height:420px;object-fit:cover;display:none;}
+.banner-slide.active{display:block;}
+
+.descricao{max-width:980px;margin:16px auto;padding:20px;background:var(--card);border-radius:12px;border:1px solid rgba(11,27,43,0.04);text-align:center;}
+.descricao h3{margin:0;color:var(--accent);font-size:22px;}
+.descricao p{margin:8px 0 0;color:var(--muted);font-size:15px;}
+
+.search-container{max-width:400px;margin:20px auto;display:flex;gap:8px;}
+.search-container input{flex:1;padding:10px;border-radius:8px;border:1px solid #ccc;font-size:14px;}
+.search-container button{padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:#fff;cursor:pointer;font-weight:700;}
+
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1160px;margin:16px auto;}
+@media(max-width:1100px){.products{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.products{grid-template-columns:1fr;}}
+.product{background:var(--card);border-radius:12px;padding:12px;border:1px solid rgba(11,27,43,0.04);display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 20px rgba(11,27,43,0.03);}
+.product img{width:100%;height:220px;object-fit:cover;border-radius:8px;}
+.product .title{font-weight:700;}
+.product .price{color:var(--accent);font-weight:800;}
+.product .actions{display:flex;gap:8px;margin-top:auto;}
+.btn{padding:10px;border-radius:10px;border:0;cursor:pointer;font-weight:700;}
+.btn.primary{background:var(--dark);color:#fff;flex:1;}
+.btn.ghost{background:transparent;border:1px solid rgba(11,27,43,0.06);flex:1;}
+
+.cart-panel{position:fixed;right:20px;top:80px;background:var(--card);border-radius:12px;padding:16px;border:1px solid rgba(11,27,43,0.06);width:320px;max-height:80vh;overflow:auto;box-shadow:0 8px 24px rgba(0,0,0,0.15);}
+.cart-panel h3{margin-top:0;}
+.cart-items{display:flex;flex-direction:column;gap:10px;}
+.cart-item{display:flex;gap:10px;align-items:center;border-radius:8px;padding:8px;background:linear-gradient(180deg,#fff,#fafafa);}
+.cart-item img{width:60px;height:60px;object-fit:cover;border-radius:6px;}
+.cart-item .info{flex:1;}
+.cart-footer{display:flex;flex-direction:column;gap:10px;margin-top:12px;}
+.total{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:18px;}
+.checkout{background:var(--dark);color:#fff;padding:10px;border-radius:10px;border:0;cursor:pointer;font-weight:800;}
+
+.testimonials-section{margin-top:28px;}
+.testimonials-container{max-width:1100px;margin:22px auto;display:flex;overflow-x:auto;gap:18px;padding:18px 8px;}
+.testimonial-card{flex:0 0 300px;background:#fff;border-radius:12px;padding:18px;box-shadow:0 8px 20px rgba(11,27,43,0.06);}
+.testimonial-card img{width:50px;height:50px;border-radius:50%;object-fit:cover;}
+.testimonial-card .who{font-weight:700;}
+.testimonial-card p{margin-top:8px;color:var(--muted);}
+ .footer-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:18px 0}
+    .footer-card{background:rgba(255,255,255,0.03);padding:18px;border-radius:8px;max-width:320px}
+footer{background:#111;color:#fff;padding:48px 20px;margin-top:30px;text-align:center;}
+.socials{display:flex;justify-content:center;gap:12px;margin-bottom:22px;}
+.socials a{color:#fff;font-size:20px;}
+.small{font-size:13px;color:var(--muted);}
+
+.menu-toggle{display:none;font-size:22px;color:#fff;border:none;background:transparent;cursor:pointer;}
+
+@media(max-width:768px){
+    header {
+      justify-content: space-between;
+    }
+    nav {
+      position: absolute;
+      top: 64px;
+      right: 0;
+      background: black;
+      width: 200px;
+      flex-direction: column;
+      display: none;
+      padding: 10px 0;
+      border-radius: 0 0 8px 8px;
+    }
+    nav a {
+      margin: 10px 16px;
+    }
+    nav.show {
+      display: flex;
+    }
+    .menu-toggle {
+      display: block;
+    }
+  
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#home">
+    <div class="logo">FL</div>
+    <div><h1>FashionLux</h1><div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px">seu look, sua identidade</div></div>
+  </a>
+  <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+  <nav id="navMenu">
+    <a href="#home">Início</a>
+    <a href="#products">Produtos</a>
+    <a href="#testimonials">Depoimentos</a>
+    <a href="sobre.html">Sobre nós</a>
+    <a href="contacto.html">Contato</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" title="Carrinho" onclick="toggleCart()"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<div class="banner-container" id="home">
+  <img class="banner-slide active" src="https://startse-uploader.s3.us-east-2.amazonaws.com/shein_7facfec84c.png" alt="Banner 1">
+  <img class="banner-slide" src="https://tm.ibxk.com.br/2025/10/03/Getty_Images_1487912868_fc75b570ab.jpg?ims=fit-in/800x500/filters:quality(70)" alt="Banner 2">
+  <img class="banner-slide" src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1200&auto=format&fit=crop" alt="Banner 3">
+</div>
+
+<div class="descricao">
+  <h3>Moda que inspira — preço justo e entrega rápida</h3>
+  <p>Na <strong>FashionLux</strong> você encontra peças selecionadas para todo o dia. Looks casuais, formais ou para ocasiões especiais — qualidade e estilo pensados para si.</p>
+</div>
+
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Pesquisar produto...">
+  <button onclick="searchProducts()">Pesquisar</button>
+</div>
+
+<div class="products" id="products">
+</div>
+
+<div class="cart-panel" id="cartPanel" style="display:none;">
+  <h3>Carrinho de Compras</h3>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="total">Total: €<span id="cartTotal">0.00</span></div>
+    <button class="checkout" onclick="checkout()">Finalizar Compra</button>
+  </div>
+</div>
+
+<section id="testimonials" class="testimonials-section">
+  <h2 style="text-align:center;color:#ff4f70;margin-top:28px">O que os clientes dizem</h2>
+  <div class="testimonials-container" id="testimonialsContainer"></div>
+</section>
+<section id="newsletter" style="background-color: #fff; padding: 40px 20px; text-align: center;">
+    <h2 style="color: #d9534f; font-size: 24px; margin-bottom: 10px;">SUBSCREVA A NOSSA NEWSLETTER</h2>
+    <p style="color: #666; margin-bottom: 20px;">Seja o primeiro a receber as novidades subscrevendo a nossa Newsletter</p>
+    <form style="display: flex; justify-content: center; max-width: 500px; margin: 0 auto;">
+        <input type="email" placeholder="Introduza o seu email" style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; font-size: 16px;">
+        <button type="submit" style="background-color: #d9534f; color: #fff; border: none; padding: 10px 20px; border-radius: 0 4px 4px 0; cursor: pointer;">Subscreva</button>
+    </form>
+</section>
+
+      <footer style="margin-top:28px" id="contact">
+        <div style="max-width:1160px;margin:0 auto;padding:28px 12px;display:flex;flex-direction:column;gap:18px">
+          <div class="socials" aria-hidden="true">
+            <a href="#" title="facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" title="whatsapp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+
+          <div class="footer-cards">
+            <div class="footer-card">
+              <h4>ESTÁ À PROCURA DE UM LOOK?</h4>
+              <p class="small">Explore nossas coleções e encontre peças para todas ocasiões.</p>
+              <div style="margin-top:8px">
+                <button class="btn" style="background:var(--accent);color:#fff;padding:8px 12px;border-radius:6px">VER COLEÇÕES</button>
+              </div>
+            </div>
+            <div class="footer-card">
+              <h4>DUVIDAS?</h4>
+              <p class="small">Fale connosco pelo WhatsApp ou envie um e-mail — responderemos rapidamente.</p>
+              <div style="margin-top:8px">
+                <button class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:8px 12px;border-radius:6px">CONTACTAR</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:center;color:#999;font-size:13px">&copy; <span id="year"></span> FashionLux. Todos os direitos reservados.</div>
+        </div>
+      </footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+let bannerIndex=0;
+const slides=document.querySelectorAll('.banner-slide');
+function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active');}
+function nextBanner(){bannerIndex=(bannerIndex+1)%slides.length;showSlide(bannerIndex);}
+function prevBanner(){bannerIndex=(bannerIndex-1+slides.length)%slides.length;showSlide(bannerIndex);}
+setInterval(nextBanner,4000);
+
+const productsData=[
+{id:'p1',title:'Vestido Floral Midi',price:29.99,img:'https://ae01.alicdn.com/kf/Sd41469608c4c4a7aa05a29102f123ca7y.jpg'},
+{id:'p2',title:'Blusa Cropped',price:14.50,img:'https://m.media-amazon.com/images/I/31-K1pWclWL._AC_SY1000_.jpg'},
+{id:'p3',title:'Calça Wide Leg',price:39.00,img:'https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7574qdskbjb47'},
+{id:'p4',title:'Jaqueta Jeans',price:49.90,img:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop'},
+{id:'p5',title:'Saia Plissada',price:24.75,img:'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1200&auto=format&fit=crop'},
+{id:'p6',title:'Conjunto Esportivo',price:34.20,img:'https://m.media-amazon.com/images/I/61RKbXrbl2L._AC_SX425_.jpg'},
+{id:'p7',title:'Bolsa Tiracolo',price:22.50,img:'https://cdn.dooca.store/117/products/bolsa-feminina-em-couro-nude_640x640+fill_ffffff.jpg?v=1633628727&webp=0'},
+{id:'p8',title:'Ténis Casuais',price:45.00,img:'https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?q=80&w=1200&auto=format&fit=crop'},
+{id:'p9',title:'Óculos de Sol',price:12.99,img:'https://cdn.shopify.com/s/files/1/0610/0779/0295/files/0-main-irregular-redondo-oculos-de-sol-das-mulheres-marca-designer-gradiente-moda-oculos-de-sol-feminino-sem-aro-metal-curvo-templos-de-sol_480x480.png?v=1645659257'},
+{id:'p10',title:'Casaco Trench Coat',price:59.99,img:'https://m.magazineluiza.com.br/a-static/420x420/casaco-trench-coat-feminino-com-faixa-hering/hering/k5k13bsi4/f07f7b72aae4cc3fdc0c7f54f5e336db.jpeg'},
+{id:'p11',title:'Camisa Social',price:24.90,img:'https://m.media-amazon.com/images/I/41PAECmvE1L._AC_SY1000_.jpg'},
+{id:'p12',title:'Short Jeans',price:19.50,img:'data:image/jpeg;base64,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'},
+];
+
+const productsContainer=document.getElementById('products');
+let cart={};
+
+function renderProducts(products=productsData){
+productsContainer.innerHTML='';
+products.forEach(p=>{
+const div=document.createElement('div');
+div.className='product';
+div.innerHTML=`<img src="${p.img}" alt="${p.title}"><div class="title">${p.title}</div><div class="price">€${p.price.toFixed(2)}</div><div class="actions"><button class="btn primary" onclick="addToCart('${p.id}')">Adicionar</button></div>`;
+productsContainer.appendChild(div);
+});
+}
+
+function addToCart(id){
+const p=productsData.find(x=>x.id===id);
+if(cart[id]){cart[id].qty+=1;}else{cart[id]={...p,qty:1};}
+updateCart();
+}
+
+function toggleCart(){
+const panel=document.getElementById('cartPanel');
+panel.style.display = panel.style.display==='none'?'block':'none';
+}
+
+function updateCart(){
+const cartItems=document.getElementById('cartItems');
+cartItems.innerHTML='';
+let total=0;
+Object.values(cart).forEach(item=>{
+total+=item.price*item.qty;
+const div=document.createElement('div');
+div.className='cart-item';
+div.innerHTML=`<img src="${item.img}" alt="${item.title}"><div class="info"><strong>${item.title}</strong><br>€${item.price.toFixed(2)} x ${item.qty}</div><button onclick="removeFromCart('${item.id}')">❌</button>`;
+cartItems.appendChild(div);
+});
+document.getElementById('cartCount').textContent=Object.values(cart).reduce((acc,i)=>acc+i.qty,0);
+document.getElementById('cartTotal').textContent=total.toFixed(2);
+}
+
+function removeFromCart(id){
+delete cart[id];
+updateCart();
+}
+
+function checkout(){
+alert('Simulação de compra: total €'+document.getElementById('cartTotal').textContent);
+cart={};
+updateCart();
+}
+
+function searchProducts(){
+const query=document.getElementById('searchInput').value.toLowerCase();
+const filtered=productsData.filter(p=>p.title.toLowerCase().includes(query));
+renderProducts(filtered);
+}
+
+renderProducts();
+
+const testimonials=[
+{name:'Maria Luísa',img:'https://randomuser.me/api/portraits/women/44.jpg',text:'Amei a qualidade do vestido! Chegou super rápido e ficou perfeito.'},
+{name:'João Pedro',img:'https://randomuser.me/api/portraits/men/32.jpg',text:'Roupas incríveis a preço justo. Vou comprar mais vezes!'},
+{name:'Caroline Mendes',img:'https://randomuser.me/api/portraits/women/68.jpg',text:'A bolsa tiracolo é linda demais, muito acima das expectativas.'},
+{name:'Ana Paula',img:'https://randomuser.me/api/portraits/women/12.jpg',text:'Atendimento ótimo, entrega super rápida e roupas de qualidade!'}
+];
+
+const testimonialsContainer=document.getElementById('testimonialsContainer');
+testimonials.forEach(t=>{
+const card=document.createElement('div');
+card.className='testimonial-card';
+card.innerHTML=`<div style="display:flex;gap:12px;align-items:center"><img src="${t.img}" alt="${t.name}"><div><div class="who">${t.name}</div></div></div><p>${t.text}</p>`;
+testimonialsContainer.appendChild(card);
+});
+function toggleMenu(){
+document.getElementById('navMenu').classList.toggle('show');
+}
+</script>
+
+</body>
+</html>
