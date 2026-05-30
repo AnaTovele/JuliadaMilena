@@ -95,8 +95,7 @@ JuliadaMilena/
 
 ### Link do site
 O GitHub gera o link público:
-
-https://techonecomercialmz-beep.github.io/JuliadaMilena/
+https://anatovele.github.io/JuliadaMilena/
 
 ## Licença
 Projeto livre para estudo, modificação e uso pessoal.
