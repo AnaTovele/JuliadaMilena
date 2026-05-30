@@ -103,4 +103,4 @@ Projeto livre para estudo, modificação e uso pessoal.
 ---
 
 ## Autor
-**Ana Rafica Tovele**  
+**Ana Tovele**  
