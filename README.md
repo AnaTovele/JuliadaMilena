@@ -1,8 +1,8 @@
-# JuliadaMilena
+# FashionLook
 
 # Loja de Produtos Personalizados
 
-Este é um site moderno para a **JuliadaMilena**, apresentando produtos, serviços e informações de contato.  
+Este é um site moderno para a loja **FashionLook**, apresentando produtos, serviços e informações de contato.  
 O site tem como objetivo mostrar o portfólio da marca e facilitar que clientes conheçam os produtos e façam encomendas.
 
 ---
@@ -63,7 +63,7 @@ O site tem como objetivo mostrar o portfólio da marca e facilitar que clientes 
 ---
 
 ##  Estrutura do Projeto
-JuliadaMilena/
+fashionlook/
 │
 ├── index.html # Página inicial
 ├── style.css # Estilos gerais
@@ -80,7 +80,7 @@ JuliadaMilena/
 
 ### Criar repositório
 - GitHub → **New Repository**  
-- Nome: `JuliadaMilena`  
+- Nome: `fashionlook`  
 - Público → Create repository  
 
 ### Enviar os arquivos
@@ -95,7 +95,7 @@ JuliadaMilena/
 
 ### Link do site
 O GitHub gera o link público:
-https://anatovele.github.io/JuliadaMilena/
+https://anatovele.github.io/fashionlook/
 
 ## Licença
 Projeto livre para estudo, modificação e uso pessoal.
