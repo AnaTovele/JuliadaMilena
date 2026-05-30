@@ -104,4 +104,4 @@ Projeto livre para estudo, modificação e uso pessoal.
 ---
 
 ## Autor
-**Julia da Milena**  
+**Ana Rafica Tovele**  
